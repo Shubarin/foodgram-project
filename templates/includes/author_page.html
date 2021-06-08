@@ -1,0 +1,33 @@
+{% load recipe_filters %}
+<div class="card-user" data-author="{{ user_to.pk }}">
+  <div class="card-user__header">
+    <h2 class="card-user__title">{{ user_to.get_full_name }}</h2>
+  </div>
+  <div class="card-user__body">
+    <ul class="card-user__items">
+      {% for recipe in user_to.recipes.all %}
+      {% if forloop.counter < 4 %}
+      <li class="card-user__item">
+        {% include 'includes/card_recipe_smallest.html' with recipe=recipe %}
+      </li>
+      {% endif %}
+      {% endfor %}
+      {% if user_to.recipe_count > 3 %}
+      <li class="card-user__item">
+        <a href="{% url 'profile' user_to.pk %}" class="card-user__link link">Еще {{ user_to.recipe_count|add:-3|translate_verbose_name }}...</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+  <div class="card-user__footer">
+    {% if user_to in user.following.all %}
+    <button class="button button_style_light-blue button_size_auto"
+            name="subscribe">Отписаться от автора
+    </button>
+    {% else %}
+    <button class="button button_style_light-blue button_size_auto"
+            name="subscribe" data-out>Подписаться на автора
+    </button>
+    {% endif %}
+  </div>
+</div>

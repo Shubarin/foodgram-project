@@ -1,0 +1,17 @@
+{% extends '../base.html' %}
+
+{% load static %}
+
+{% block title %}400{% endblock %}
+{% block scripts %}
+<link rel="stylesheet" href="{% static 'css/pages/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="custom-center-block">
+  <p class="custom-text-block">Упс, что-то пошло не так... Ошибка 400</p>
+  <div class="custom-button-block">
+    <a class="button button_style_blue" href="{% url 'home' %}">Перейти на главную</a>
+  </div>
+</div>
+{% endblock %}

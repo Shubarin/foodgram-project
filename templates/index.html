@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Рецепты{% endblock %}
+{% block scripts %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/pages/index.css' %}">
+{% endblock %}
+{% block content %}
+<div class="main__header">
+    <h1 class="main__title">Рецепты</h1>
+    {% if page %}
+        {% include "includes/tags_filter.html" with recipe=recipe %}
+    {% endif %}
+</div>
+<div class="card-list">
+    {% for recipe in page %}
+        {% include "includes/card_recipe.html" with recipe=recipe %}
+    {% endfor %}
+</div>
+{% if request.resolver_match.url_name == 'favorites' and not page %}
+<p>Вы ещё не добавили ничего в избранное... Перейти на <a href="{% url 'home' %}">страницу рецептов</a>, чтобы добавить</p>
+{% endif %}
+{% if page.has_other_pages %}
+    {% include "includes/paginator.html" with items=page paginator=paginator%}
+{% endif %}
+<script src="{% static 'js/components/MainCards.js' %}"></script>
+
+<script src="{% static 'js/components/Purchases.js' %}"></script>
+<script src="{% static 'js/components/Favorites.js' %}"></script>
+
+<script src="{% static 'js/config/config.js' %}"></script>
+<script src="{% static 'js/components/CardList.js' %}"></script>
+<script src="{% static 'js/components/Header.js' %}"></script>
+
+<script src="{% static 'js/api/Api.js' %}"></script>
+<script src="{% static 'indexAuth.js' %}"></script>
+{% endblock %}

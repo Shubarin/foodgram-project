@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Выход{% endblock %}
+{% block scripts %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/pages/form.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="main__header">
+        <h1 class="main__title">Вы покидаете наш сайт</h1>
+    </div>
+    <p>Вы успешно вышли из системы.
+        Вы можете <a href="{% url 'login' %}">войти заново</a>. </p>
+{% endblock %}

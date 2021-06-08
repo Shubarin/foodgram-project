@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Мои подписки{% endblock %}
+{% block scripts %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/pages/myFollow.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="main__header">
+        <h1 class="main__title">Мои подписки</h1>
+    </div>
+    <div class="card-list">
+        {% if not page %}
+        <p>Вы ещё не подписаны ни на кого... Перейти на <a href="{% url 'home' %}">страницу рецептов</a>, чтобы выбрать</p>
+        {% endif %}
+        {% for user_to in page %}
+            {% include 'includes/author_page.html' with page=page user_to=user_to %}
+        {% endfor %}
+    </div>
+    {% if page.has_other_pages %}
+        {% include 'includes/paginator.html' with page=page paginator=paginator %}
+    {% endif %}
+<script src="{% static 'js/config/config.js' %}"></script>
+<script src="{% static 'js/components/MainCards.js' %}"></script>
+<script src="{% static 'js/components/MyFollow.js' %}"></script>
+<script src="{% static 'js/components/Subscribe.js' %}"></script>
+<script src="{% static 'js/components/Header.js' %}"></script>
+<script src="{% static 'js/api/Api.js' %}"></script>
+<script src="{% static 'myFollow.js' %}"></script>
+{% endblock %}
+

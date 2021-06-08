@@ -1,0 +1,35 @@
+{% load static %}
+<h1 align="center">Список покупок</h1>
+<style type="text/css">
+    BODY {
+        background: white; /* Цвет фона веб-страницы */
+    }
+
+    TABLE {
+        width: 100%; /* Ширина таблицы */
+        border-collapse: collapse; /* Убираем двойные линии между ячейками */
+        border: 2px solid white; /* Прячем рамку вокруг таблицы */
+    }
+
+    TD, TH {
+        padding: 3px; /* Поля вокруг содержимого таблицы */
+        border: 1px solid maroon; /* Параметры рамки */
+        text-align: left; /* Выравнивание по левому краю */
+    }
+</style>
+<table align="center">
+    <tr>
+        <th>№ п.п.</th>
+        <th>Наименование</th>
+        <th>Единицы измерения</th>
+        <th>Количество</th>
+    </tr>
+    {% for item in ingredients %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ item.ingredients__name|capfirst }}</td>
+        <td>{{ item.amount }}</td>
+        <td>{{ item.ingredients__unit_of_measurement__name }}</td>
+    </tr>
+    {% endfor %}
+</table>

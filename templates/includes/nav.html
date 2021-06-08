@@ -1,0 +1,27 @@
+<nav class="nav">
+    <div class="nav__container container">
+        {% if user.is_authenticated %}
+        <ul class="nav__items list">
+            <li class="nav__item {% if request.resolver_match.url_name == 'home' %}nav__item_active{% endif %}"><a href="{% url 'home' %}" class="nav__link link">Рецепты</a></li>
+            <li class="nav__item {% if request.resolver_match.url_name == 'subscriptions' %}nav__item_active{% endif %}"><a href="{% url 'subscriptions' %}" class="nav__link link">Мои подписки</a></li>
+            <li class="nav__item {% if request.resolver_match.url_name == 'create_recipe' %}nav__item_active{% endif %}"><a href="{% url 'create_recipe' %}" class="nav__link link">Создать рецепт</a></li>
+            <li class="nav__item {% if request.resolver_match.url_name == 'favorites' %}nav__item_active{% endif %}"><a href="{% url 'favorites' %}" class="nav__link link">Избранное</a></li>
+            <li class="nav__item {% if request.resolver_match.url_name == 'cart_detail' %}nav__item_active{% endif %}"><a href="{% url 'cart:cart_detail' %}" class="nav__link link">Список покупок</a> <span class="badge badge_style_blue nav__badge" id="counter">{% if request.session.cart|length != 0 %}{{ request.session.cart|length }}{% endif %}</span></li>
+
+        </ul>
+        <ul class="nav__items list">
+            <li class="nav__item"><a href="{% url 'password_change' %}" class="nav__link link">Изменить пароль</a></li>
+            <li class="nav__item"><a href="{% url 'logout' %}" class="nav__link link">Выход</a></li>
+        </ul>
+        {% else %}
+        <ul class="nav__items list">
+            <li class="nav__item {% if request.resolver_match.url_name == 'home' %}nav__item_active{% endif %}"><a href="{% url 'home' %}" class="nav__link link">Рецепты</a></li>
+            <li class="nav__item {% if request.resolver_match.url_name == 'cart_detail' %}nav__item_active{% endif %}"><a href="{% url 'cart:cart_detail' %}" class="nav__link link">Список покупок</a> <span class="badge badge_style_blue nav__badge" id="counter">{% if request.session.cart|length != 0 %}{{ request.session.cart|length }}{% endif %}</span></li>
+        </ul>
+        <ul class="nav__items list">
+            <li class="nav__item"><a href="{% url 'login' %}" class="nav__link link">Войти</a></li>
+            <li class="nav__item"><a href="{% url 'register' %}" class="button button_style_blue">Создать аккаунт</a></li>
+        </ul>
+        {% endif %}
+    </div>
+</nav>

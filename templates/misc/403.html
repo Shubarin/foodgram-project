@@ -1,0 +1,17 @@
+{% extends '../base.html' %}
+
+{% load static %}
+
+{% block title %}403{% endblock %}
+{% block scripts %}
+<link rel="stylesheet" href="{% static 'css/pages/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="custom-center-block">
+  <p class="custom-text-block">Похоже у вас нет нужных прав для просмотра этой страницы... Ошибка 403</p>
+  <div class="custom-button-block">
+    <a class="button button_style_blue" href="{% url 'home' %}">Перейти на главную</a>
+  </div>
+</div>
+{% endblock %}

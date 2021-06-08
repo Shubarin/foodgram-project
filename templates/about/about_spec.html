@@ -1,0 +1,17 @@
+{% extends '../base.html' %}
+
+{% load static %}
+
+{% block title %}Технологии{% endblock %}
+{% block scripts %}
+<link rel="stylesheet" href="{% static 'css/pages/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="custom-center-block">
+  <p class="custom-text-block">Python 3, Django, PostgreSQL, gunicorn, nginx, Яндекс.Облако(Ubuntu 18.04), Django REST Framework, GIT, pytest, HTML, CSS, JS</p>
+  <div class="custom-button-block">
+    <a class="button button_style_blue" href="{% url 'home' %}">Перейти на главную</a>
+  </div>
+</div>
+{% endblock %}
