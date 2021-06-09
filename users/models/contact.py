@@ -6,13 +6,17 @@ from django.db import models
 class Contact(models.Model):
     user_from = models.ForeignKey(settings.AUTH_USER_MODEL,
                                   related_name='rel_from_set',
-                                  on_delete=models.CASCADE)
+                                  on_delete=models.CASCADE,
+                                  verbose_name='Подписчик')
     user_to = models.ForeignKey(settings.AUTH_USER_MODEL,
                                 related_name='rel_to_set',
-                                on_delete=models.CASCADE)
+                                on_delete=models.CASCADE,
+                                verbose_name='Автор')
     created = models.DateTimeField(auto_now_add=True, db_index=True)
 
     class Meta:
+        verbose_name = 'Подписка'
+        verbose_name_plural = 'Подписки'
         ordering = ('-created',)
         constraints = [
             models.UniqueConstraint(

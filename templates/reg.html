@@ -4,7 +4,7 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/pages/form.css' %}">
 {% endblock %}
-{% load user_filters %}
+{% load recipe_filters %}
 
 {% block content %}
 <div class="main__header">
@@ -18,7 +18,7 @@
             <label for={{ field.id_for_label }} class="form__label">{{ field.label }}{% if field.field.required %}<span
                         class="required">*</span>{% endif %}</label>
             <div class="form__field-group">
-                {{ field|addclass:"form__input" }}
+                {{ field|add_class:"form__input" }}
                 {% if field.help_text %}
                 <small id="{{ field.id_for_label }}-help" class="form-text text-muted">{{ field.help_text|safe }}</small>
                 {% endif %}
@@ -31,9 +31,7 @@
         </div>
         {% endfor %}
         <div class="form__footer">
-            <button type="submit" class="button button_style_blue">Создать
-                аккаунт
-            </button>
+            <button type="submit" class="button button_style_blue">Создать аккаунт</button>
         </div>
     </form>
 </div>

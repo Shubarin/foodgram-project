@@ -4,16 +4,18 @@ from . import Measurement
 
 
 class Ingredient(models.Model):
-    name = models.CharField(max_length=256, db_index=True)
+    name = models.CharField(max_length=256, db_index=True,
+                            verbose_name='Название')
     unit_of_measurement = models.ForeignKey(Measurement,
                                             on_delete=models.SET_NULL,
                                             null=True,
-                                            related_name='ingredients')
+                                            related_name='ingredients',
+                                            verbose_name='Единицы измерения')
 
     class Meta:
         ordering = ('name',)
-        verbose_name = 'ingredient'
-        verbose_name_plural = 'ingredients'
+        verbose_name = 'Ингредиент'
+        verbose_name_plural = 'Ингредиенты'
         constraints = [
             models.UniqueConstraint(
                 fields=['name', 'unit_of_measurement'],

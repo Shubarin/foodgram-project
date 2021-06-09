@@ -3,9 +3,6 @@ from django.template.loader import get_template
 
 
 def generate_pdf(template_name, context):
-    """
-    Generate a PDF file from Django template.
-    """
     pdf_options = {
         'page-size': 'Letter',
         'margin-top': '0.75in',

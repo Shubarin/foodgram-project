@@ -4,11 +4,11 @@ from django.shortcuts import get_object_or_404, redirect, render, reverse
 
 from foodgram.settings import RECORDS_ON_THE_PAGE
 from recipes.forms.create_recipe import RecipeForm
-from recipes.models import Recipe, Tag
+from recipes.models import Recipe, Tag, TagChoices
 from recipes.utils import save_recipe
 from users.models import User
 
-TAGS = ['breakfast', 'lunch', 'dinner']
+TAGS = [TagChoices.BREAKFAST, TagChoices.LUNCH, TagChoices.DINNER]
 
 
 def home(request):
