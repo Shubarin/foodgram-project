@@ -1,6 +1,6 @@
 # foodgram-project
 
-![Django-app workflow](https://github.com/Shubarin/foodgram-project/actions/workflows/foodgram_workflow.yml/badge.svg)
+![foodgram workflow](https://github.com/Shubarin/foodgram-project/actions/workflows/foodgram_workflow.yml/badge.svg)
 
 
 # Описание
