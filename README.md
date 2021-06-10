@@ -2,6 +2,7 @@
 
 ![foodgram workflow](https://github.com/Shubarin/foodgram-project/actions/workflows/foodgram_workflow.yml/badge.svg)
 
+Site: http://84.252.132.152/
 
 # Описание
 Cайт «Продуктовый помощник».
@@ -36,6 +37,20 @@ Cайт «Продуктовый помощник».
 9. Приложение будет доступно по адресу  
    ```http://127.0.0.1/```
 
+## В режиме запуска на сервере
+1. Запустите докер  
+   ```docker-compose up -d --build```
+2. Создайте необходимые миграции:   
+   ```docker-compose exec web python manage.py makemigrations api```
+3. Накатите созданные миграции в БД  
+   ```docker-compose exec web python manage.py migrate```
+4. Создайте суперпользователя:  
+   ```docker-compose exec web python manage.py createsuperuser```
+5. Соберите статику  
+   ```docker-compose exec web python manage.py collectstatic --no-input```
+6. Приложение будет доступно по адресу  
+   ```http://127.0.0.1/```
+
 # Загрузка тестовых данных
 1. Выполните последовательно следующий код:
 ```python manage.py loaddata fixtures.json```  
@@ -53,6 +68,5 @@ Cайт «Продуктовый помощник».
      и может наполняться незарегистрированными пользователями
    
 # База данных
-
 Если же вам нужна чистая база, но уже чтобы были какие-то ингредиенты, то для загрузки тестовых ингредиентов существует команда `python manage.py load_data` , которая загрузит только тестовые ингредиенты.  
 Тестировать пустой проект будет неудобно, а наполнять его руками — долго.
