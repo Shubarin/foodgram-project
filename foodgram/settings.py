@@ -1,6 +1,9 @@
 import os
 from pathlib import Path
 
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-u&7ned-9c!ej$^&d-v6ljrp36-!teej40#6@q^45++mzw$$x7t'
@@ -130,9 +133,6 @@ CART_SESSION_ID = 'cart'
 
 # Paginator setup
 RECORDS_ON_THE_PAGE = 6
-
-import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
 
 sentry_sdk.init(
     dsn="https://146d7ebbe1be4cc796e6d9177fae0bc7@o576284.ingest.sentry.io/5812404",
