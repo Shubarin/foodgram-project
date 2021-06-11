@@ -130,3 +130,13 @@ CART_SESSION_ID = 'cart'
 
 # Paginator setup
 RECORDS_ON_THE_PAGE = 6
+
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
+sentry_sdk.init(
+    dsn="https://146d7ebbe1be4cc796e6d9177fae0bc7@o576284.ingest.sentry.io/5812404",
+    integrations=[DjangoIntegration()],
+    traces_sample_rate=1.0,
+    send_default_pii=True
+)
