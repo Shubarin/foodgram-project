@@ -3,7 +3,7 @@
   <ul class="pagination__container">
     {% if page.has_previous %}
     <li class="pagination__item"><a class="pagination__link link"
-                                    href="?page={{ page.previous_page_number }}"><span class="icon-left"></span></a>
+                                    href="?page={{ page.previous_page_number }}{{ tags|tags_to_url_params }}"><span class="icon-left"></span></a>
     </li>
     {% endif %}
     {% for i in page.paginator.page_range %}

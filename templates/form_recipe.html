@@ -51,7 +51,7 @@
                         <input type="text" id="nameIngredient" class="form__input">
                         <div class="form__dropdown-items"></div>
                     </div>
-                    <input type="number" id="cantidad" class="form__input" min="0">
+                    <input type="number" id="cantidad" class="form__input" min="0" oninput="this.value = Math.abs(this.value)">
                     <label for="cantidad" class="form__label" id="cantidadVal">шт.</label>
                 </div>
                 <div class="form__field-group-ingredientes-container">

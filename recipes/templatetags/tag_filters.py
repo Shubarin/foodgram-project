@@ -4,6 +4,11 @@ register = template.Library()
 
 
 @register.filter
+def tags_list(get):
+    return get.getlist('tags')
+
+
+@register.filter
 def set_tag_qs(request, tag):
     new_request = request.GET.copy()
     tags = request.GET.getlist('tags')
