@@ -6,7 +6,7 @@ from sentry_sdk.integrations.django import DjangoIntegration
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'django-insecure-u&7ned-9c!ej$^&d-v6ljrp36-!teej40#6@q^45++mzw$$x7t'
 
 DEBUG = True
 
@@ -135,7 +135,7 @@ CART_SESSION_ID = 'cart'
 RECORDS_ON_THE_PAGE = 6
 
 sentry_sdk.init(
-    dsn=os.environ.get('SENTRY_DSN'),
+    dsn="https://146d7ebbe1be4cc796e6d9177fae0bc7@o576284.ingest.sentry.io/5812404",
     integrations=[DjangoIntegration()],
     traces_sample_rate=1.0,
     send_default_pii=True
